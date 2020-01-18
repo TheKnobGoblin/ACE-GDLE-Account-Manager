@@ -85,7 +85,7 @@ $('document').ready(function() {
 					});
 				}
 				else if(data=="resetpw") {
-					$("#btn-submit").html('<img src="img/btn-ajax-loader.gif" /> &nbsp; Signing Up ...');
+					$("#btn-submit").html('<img src="img/btn-ajax-loader.gif" /> &nbsp; Resetting password ...');
 					setTimeout('$(".form-signin").fadeOut(500, function(){ $(".signin-form").load("success3.php"); }); ',5000);
 				}
 				else {
