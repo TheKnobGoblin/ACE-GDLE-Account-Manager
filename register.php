@@ -127,12 +127,12 @@
 					}
 					
 					if ($emulator == "ACE") {
-						$stmt = $db_con->prepare("INSERT INTO account(accountName,passwordHash,passwordSalt,accessLevel,email_Address,auth_Token,create_I_P) VALUES(:uname, :pass, :salt, 0, :email, :token, :ntoa)");
+						$stmt = $db_con->prepare("INSERT INTO account(accountName,passwordHash,passwordSalt,auth_Token,accessLevel,email_Address,create_I_P) VALUES(:uname, :pass, :salt, :token, 0, :email, :ntoa)");
 						$stmt->bindParam(":uname",$user_name);
 						$stmt->bindParam(":pass",$hashedPW2);
 						$stmt->bindParam(":salt",$salt);
-						$stmt->bindParam(":email",$user_email);
 						$stmt->bindParam(":token",$hashedToken);
+						$stmt->bindParam(":email",$user_email);
 						$stmt->bindParam(":ntoa",$ip_bin);
 					}
 					else {
