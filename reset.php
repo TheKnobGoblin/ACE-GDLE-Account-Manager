@@ -52,7 +52,7 @@
 					if ($emailCount > 0) {
 						
 						if ($use_BCRYPT) {
-							$salt = "bcrypt";
+							$salt = "use bcrypt";
 							$hashedPW2 = password_hash($user_password, PASSWORD_BCRYPT);
 						}
 						else {
