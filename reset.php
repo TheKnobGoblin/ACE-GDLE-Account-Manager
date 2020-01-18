@@ -69,18 +69,27 @@
 						}
 						$stmt3->bindParam(":pass",$hashedPW2);
 						$stmt3->bindParam(":email",$user_email);
+						
+						if ($emulator == "ACE") {
+							$stmt4 = $db_con->prepare("UPDATE account SET passwordSalt = :salt WHERE email_Address = :email");
+						}
+						else {
+							$stmt4 = $db_con->prepare("UPDATE accounts SET password_salt = :salt WHERE email = :email");
+						}
+						$stmt4->bindParam(":salt",$salt);
+						$stmt4->bindParam(":email",$user_email);
 
-						if($stmt3->execute()) {
+						if($stmt4->execute()) {
 							
 							if ($emulator == "ACE") {
-								$stmt4 = $db_con->prepare("UPDATE account SET auth_Token = '' WHERE auth_Token = :key");
+								$stmt5 = $db_con->prepare("UPDATE account SET auth_Token = '' WHERE auth_Token = :key");
 							}
 							else {
-								$stmt4 = $db_con->prepare("UPDATE accounts SET auth_token = '' WHERE auth_token = :key");
+								$stmt5 = $db_con->prepare("UPDATE accounts SET auth_token = '' WHERE auth_token = :key");
 							}
-							$stmt4->bindParam(":key",$confirm_key);
+							$stmt5->bindParam(":key",$confirm_key);
 
-							if($stmt4->execute()) {
+							if($stmt5->execute()) {
 								echo "resetpw"; // Success response
 							}
 						}
