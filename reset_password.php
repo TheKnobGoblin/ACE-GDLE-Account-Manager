@@ -76,7 +76,7 @@
 
 			<!-- Google Recaptcha -->
 			<div class="text-center">
-				<div class="" data-sitekey="ENTER YOUR RECAPTCHA SITE KEY HERE"></div>
+				<div class="g-recaptcha" data-sitekey="ENTER YOUR RECAPTCHA SITE KEY HERE"></div>
 			</div>
 			<br />
 
